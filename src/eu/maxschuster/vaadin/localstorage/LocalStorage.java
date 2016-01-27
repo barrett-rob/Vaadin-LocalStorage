@@ -21,7 +21,9 @@ package eu.maxschuster.vaadin.localstorage;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gwt.storage.client.Storage;
 import com.google.gwt.storage.client.StorageEvent;
@@ -52,7 +54,7 @@ public class LocalStorage extends AbstractExtension {
 	/**
 	 * Java logger
 	 */
-	private final static Logger LOGGER = Logger.getLogger(LocalStorage.class.getName()); 
+	private final static Logger LOGGER = LoggerFactory.getLogger(LocalStorage.class); 
 	
 	/**
 	 * Map of callbacks
@@ -234,7 +236,7 @@ public class LocalStorage extends AbstractExtension {
 	public void setSimulateNotSupported(boolean simulateNotSupported) {
 		if (getState().simulateNotSupported != simulateNotSupported) {
 			if (simulateNotSupported) {
-				LOGGER.warning("SimulateNotSupported mode activated!");	
+				LOGGER.warn("SimulateNotSupported mode activated!");	
 			} else {
 				LOGGER.info("SimulateNotSupported mode deactivated!");	
 			}
